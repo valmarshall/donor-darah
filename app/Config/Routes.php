@@ -34,6 +34,7 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 $routes->get('/admin', 'AdminDashboard::index');
 $routes->get('/admin/users', 'AdminUsers::index');
+$routes->get('/admin/users/add', 'AdminUsers::add');
 $routes->get('/admin/roles', 'AdminRoles::index');
 $routes->get('/admin/roles/add', 'AdminRoles::add');
 $routes->get('/admin/roles/edit/(:segment)', 'AdminRoles::edit/$1');

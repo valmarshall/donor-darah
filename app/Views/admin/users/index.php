@@ -65,10 +65,10 @@
                         <?php foreach ($users as $u) : ?>
                             <td><?= $i++; ?></td>
                             <td>
-                                <img src="/assets/uploads/admin-user/<?= $u['image']; ?>" alt="profil <?= $u['username']; ?>" width="150px">
+                                <img src="/assets/uploads/admin-user/<?= $u['image']; ?>" alt="profil <?= $u['username']; ?>" width="75px">
                             </td>
                             <td>
-                                <?= $u['name']; ?>
+                                <?= $u['nama']; ?>
                                 <br>
                                 <span class="badge badge-secondary"><?= $u['username']; ?></span>
                             </td>
