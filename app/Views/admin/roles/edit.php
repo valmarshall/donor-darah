@@ -42,7 +42,7 @@
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer">
-                            <button class="btn btn-primary float-right" type="submit">Save</button>
+                            <button class="btn btn-success float-right" type="submit">Update</button>
                         </div>
                     </form>
                     <!-- /.card-footer-->
