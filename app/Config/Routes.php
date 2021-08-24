@@ -32,15 +32,19 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('/admin/login', 'AdminAuth::index');
-$routes->get('/admin', 'AdminDashboard::index');
-$routes->get('/admin/users', 'AdminUsers::index');
-$routes->get('/admin/users/add', 'AdminUsers::add');
-$routes->get('/admin/users/edit/(:segment)', 'AdminUsers::edit/$1');
-$routes->delete('/admin/users/(:num)', 'AdminUsers::delete/$1');
-$routes->get('/admin/roles', 'AdminRoles::index');
-$routes->get('/admin/roles/add', 'AdminRoles::add');
-$routes->get('/admin/roles/edit/(:segment)', 'AdminRoles::edit/$1');
+$routes->get('/admin/login', 'AdminAuth::index', ['filter' => 'auth']);
+$routes->get('/admin', 'AdminDashboard::index', ['filter' => 'admin']);
+$routes->get('/admin/users', 'AdminUsers::index', ['filter' => 'admin']);
+$routes->get('/admin/users/add', 'AdminUsers::add', ['filter' => 'admin']);
+$routes->get('/admin/users/edit/(:segment)', 'AdminUsers::edit/$1', ['filter' => 'admin']);
+$routes->delete('/admin/users/(:num)', 'AdminUsers::delete/$1', ['filter' => 'admin']);
+$routes->get('/admin/roles', 'AdminRoles::index', ['filter' => 'admin']);
+$routes->get('/admin/roles/add', 'AdminRoles::add', ['filter' => 'admin']);
+$routes->get('/admin/roles/edit/(:segment)', 'AdminRoles::edit/$1', ['filter' => 'admin']);
+$routes->get('/admin/blood-stock', 'AdminBloodStock::index', ['filter' => 'admin']);
+$routes->get('/admin/blood-donor', 'AdminBloodDonor::index', ['filter' => 'admin']);
+$routes->get('/admin/blood-group', 'AdminBloodGroup::index', ['filter' => 'admin']);
+$routes->get('/admin/blood-group/add', 'AdminBloodGroup::add', ['filter' => 'admin']);
 $routes->delete('/admin/roles/(:num)', 'AdminRoles::delete/$1');
 
 /*

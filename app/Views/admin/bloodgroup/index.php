@@ -15,12 +15,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Roles Data</h1>
+                    <h1>Blood Group</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Roles Data</li>
+                        <li class="breadcrumb-item active">Blood Group</li>
                     </ol>
                 </div>
             </div>
@@ -43,9 +43,9 @@
         <!-- Default box -->
         <div class="card shadow">
             <div class="card-header">
-                <a href="/admin/roles/add" class="btn btn-primary rounded-pill">
+                <a href="/admin/blood-group/add" class="btn btn-primary rounded-pill">
                     <i class="fas fa-plus-circle mr-1"></i>
-                    Add New Role
+                    Add Blood Group
                 </a>
 
                 <div class="card-tools">
@@ -59,30 +59,31 @@
             </div>
             <div class="card-body">
 
-                <table id="roleTable" class="table table-hover" style="width:100%">
+                <table id="bloodGroupTable" class="table table-hover" style="width:100%">
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Role</th>
+                            <th>Blood Group</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $i = 1; ?>
-                        <?php foreach ($roles as $r) : ?>
+                        <?php foreach ($bloodGroup as $bg) : ?>
                             <tr>
                                 <td><?= $i++; ?></td>
+                                <td><?= $bg['blood_group']; ?></td>
                                 <td>
-                                    <?= $r['role']; ?>
-                                </td>
-                                <td>
-                                    <a href="/admin/roles/edit/<?= $r['slug']; ?>" class="btn btn-sm btn-success rounded-circle" data-toggle="tooltip" data-placement="top" title="Edit User">
+                                    <a href="/admin/blood-group/<?= $bg['slug']; ?>" class="btn btn-sm btn-info rounded-circle" data-toggle="tooltip" data-placement="left" title="See All Donor">
+                                        <span><i class="fas fa-info-circle"></i></span>
+                                    </a>
+                                    <a href="/admin/blood-group/edit/<?= $bg['slug']; ?>" class="btn btn-sm btn-success rounded-circle" data-toggle="tooltip" data-placement="top" title="Edit Group">
                                         <span><i class="far fa-edit"></i></span>
                                     </a>
-                                    <form action="/admin/roles/<?= $r['id']; ?>" method="POST" class="d-inline">
+                                    <form action="/admin/blood-group/<?= $bg['id']; ?>" method="POST" class="d-inline">
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
-                                        <button type="submit" class="btn btn-sm btn-danger rounded-circle" data-toggle="tooltip" data-placement="right" title="Delete User" onclick="confirm('Are you sure you want to delete this?')">
+                                        <button type="submit" class="btn btn-sm btn-danger rounded-circle" data-toggle="tooltip" data-placement="right" title="Delete Group" onclick="confirm('Are you sure you want to delete this?')">
                                             <span><i class="fas fa-trash-alt"></i></span>
                                         </button>
                                     </form>
@@ -93,7 +94,7 @@
                     <tfoot>
                         <tr>
                             <th>No</th>
-                            <th>Role</th>
+                            <th>Blood Group</th>
                             <th></th>
                         </tr>
                     </tfoot>
@@ -127,7 +128,7 @@
 <script>
     // DataTable activation
     $(document).ready(function() {
-        $('#roleTable').DataTable();
+        $('#bloodGroupTable').DataTable();
     });
 
     // Tooltip activation

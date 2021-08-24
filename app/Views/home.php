@@ -7,16 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- style -->
-    <link rel="stylesheet" href="assets/main/css/jquery-ui.css">
-    <link rel="stylesheet" href="assets/main/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/main/css/lightbox.min.css">
-    <link rel="stylesheet" href="assets/main/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/main/css/normalize.css">
-    <link rel="stylesheet" href="assets/main/css/slicknav.min.css">
-    <link rel="stylesheet" href="assets/main/css/style.css">
-    <link rel="stylesheet" href="assets/main/css/responsive.css">
-    <link rel="stylesheet" href="assets/main/css/chosen.css">
-    <link rel="stylesheet" href="assets/main/css/datatable.min.css">
+    <link rel="stylesheet" href="/assets/main/css/jquery-ui.css">
+    <link rel="stylesheet" href="/assets/main/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/main/css/lightbox.min.css">
+    <link rel="stylesheet" href="/assets/main/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/main/css/normalize.css">
+    <link rel="stylesheet" href="/assets/main/css/slicknav.min.css">
+    <link rel="stylesheet" href="/assets/main/css/style.css">
+    <link rel="stylesheet" href="/assets/main/css/responsive.css">
+    <link rel="stylesheet" href="/assets/main/css/chosen.css">
+    <link rel="stylesheet" href="/assets/main/css/datatable.min.css">
     <!-- end style -->
 
     <title>Home</title>
@@ -26,7 +26,7 @@
 
     <!-- preloader -->
     <div id="preloader">
-        <div id="status" style="background-image: url(assets/main/img/preloader/preloader.gif)"></div>
+        <div id="status" style="background-image: url(/assets/main/img/preloader/preloader.gif)"></div>
     </div>
     <!-- end preloader -->
 

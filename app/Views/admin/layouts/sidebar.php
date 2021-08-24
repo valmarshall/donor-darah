@@ -52,13 +52,36 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="/admin/blood" class="nav-link <?= ($menu == 'dashboard') ? 'active' : ''; ?>">
+                <li class="nav-item <?= ($menu == 'blood-stock' || $menu == 'blood-donor' || $menu == 'blood-group') ? 'menu-open' : ''; ?>">
+                    <a href="#" class="nav-link <?= ($menu == 'blood-stock' || $menu == 'blood-donor' || $menu == 'blood-group') ? 'active' : ''; ?>">
                         <i class="nav-icon fas fa-tint"></i>
                         <p>
-                            Blood Stock
+                            Blood
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="/admin/blood-stock" class="nav-link <?= ($menu == 'blood-stock') ? 'active' : ''; ?>">
+                                <i class="fas fa-boxes nav-icon"></i>
+                                <p>
+                                    Blood Stock
+                                </p>
+                            </a>
+                            <a href="/admin/blood-donor" class="nav-link <?= ($menu == 'blood-donor') ? 'active' : ''; ?>">
+                                <i class="fas fa-heart nav-icon"></i>
+                                <p>
+                                    Blood Donor
+                                </p>
+                            </a>
+                            <a href="/admin/blood-group" class="nav-link <?= ($menu == 'blood-group') ? 'active' : ''; ?>">
+                                <i class="fas fa-layer-group nav-icon"></i>
+                                <p>
+                                    Blood Group
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>

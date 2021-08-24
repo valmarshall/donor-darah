@@ -4,13 +4,13 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class RolesModel extends Model
+class BloodGroupModel extends Model
 {
-    protected $table = 'admin_roles';
+    protected $table = 'blood_group';
     protected $useTimestamps = true;
-    protected $allowedFields = ['role', 'slug'];
+    protected $allowedFields = ['blood_group', 'slug'];
 
-    public function getRole($slug = false)
+    public function getBloodGroup($slug = false)
     {
         if ($slug == false) {
             return $this->findAll();
