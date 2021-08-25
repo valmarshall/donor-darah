@@ -68,4 +68,61 @@ class AdminBloodGroup extends BaseController
 
         return redirect()->to('/admin/blood-group');
     }
+
+    public function edit($slug)
+    {
+        $data = [
+            'title' => 'Donor Darah ~ Admin | Edit Blood Group',
+            'menu' => 'blood-group',
+            'me' => $this->userModels->getUser(session()->get('username')),
+            'myRole' => $this->roleModels->find(session()->get('id_role')),
+            'validation' => \config\Services::validation(),
+            'bloodGroup' => $this->bloodGroupModel->getBloodGroup($slug)
+        ];
+
+        return view('admin/bloodgroup/edit', $data);
+    }
+
+    public function update()
+    {
+        $data = [
+            'id' => $this->request->getVar('id'),
+            'oldGroupName' => $this->request->getVar('oldGroupName'),
+            'groupName' => $this->request->getVar('groupName'),
+            'slug' => $this->request->getVar('slug'),
+        ];
+
+        if ($data['oldGroupName'] == $data['groupName']) {
+            $ruleGroupName = 'required';
+        } else {
+            $ruleGroupName = 'required|is_unique[blood_group.blood_group]';
+        }
+
+        if (!$this->validate([
+            'groupName' => $ruleGroupName
+        ])) {
+            return redirect()->to('/admin/blood-group/edit/' . $data['slug'])->withInput();
+        }
+
+        $slug = url_title($data['groupName'], '-', true);
+
+        $this->bloodGroupModel->save([
+            'id' => $data['id'],
+            'blood_group' => $data['groupName'],
+            'slug' => $slug
+        ]);
+
+        session()->setFlashdata('message', 'Group edited successfully');
+
+        return redirect()->to('/admin/blood-group');
+    }
+
+    public function delete($id)
+    {
+        $this->bloodGroupModel->delete($id);
+
+        session()->setFlashdata('message', 'Group deleted successfully');
+
+        return redirect()->to('/admin/blood-group');
+    }
 }

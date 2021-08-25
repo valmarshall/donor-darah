@@ -15,12 +15,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Blood Group</h1>
+                    <h1>Blood Donor</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Blood Group</li>
+                        <li class="breadcrumb-item active">Blood Donor</li>
                     </ol>
                 </div>
             </div>
@@ -43,9 +43,9 @@
         <!-- Default box -->
         <div class="card shadow">
             <div class="card-header">
-                <a href="/admin/blood-group/add" class="btn btn-primary rounded-pill">
+                <a href="/admin/blood-donor/add" class="btn btn-primary rounded-pill">
                     <i class="fas fa-plus-circle mr-1"></i>
-                    Add Blood Group
+                    Add Blood Donor
                 </a>
 
                 <div class="card-tools">
@@ -63,24 +63,32 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Blood Group</th>
+                            <th>Image</th>
+                            <th>NIK</th>
+                            <th>Name</th>
+                            <th>Day of Birth</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $i = 1; ?> 
-                        <?php foreach ($bloodGroup as $bg) : ?>
+                        <?php $i = 1; ?>
+                        <?php foreach ($bloodDonor as $bd) : ?>
                             <tr>
                                 <td><?= $i++; ?></td>
-                                <td><?= $bg['blood_group']; ?></td>
                                 <td>
-                                    <a href="/admin/blood-group/<?= $bg['slug']; ?>" class="btn btn-sm btn-info rounded-circle" data-toggle="tooltip" data-placement="left" title="See All Donor">
+                                    <img src="/assets/uploads/blood-donor/<?= $bd['image']; ?>" alt="<?= $bd['nama']; ?> picture" width="100px">
+                                </td>
+                                <td><?= $bd['nik']; ?></td>
+                                <td><?= $bd['nama']; ?></td>
+                                <td><?= $bd['tempat_lahir'] . ', ' . date('d F Y', strtotime($bd['tanggal_lahir'])); ?></td>
+                                <td>
+                                    <a href="/admin/blood-donor/<?= $bd['nik']; ?>" class="btn btn-sm btn-info rounded-circle" data-toggle="tooltip" data-placement="left" title="See Detail">
                                         <span><i class="fas fa-info-circle"></i></span>
                                     </a>
-                                    <a href="/admin/blood-group/edit/<?= $bg['slug']; ?>" class="btn btn-sm btn-success rounded-circle" data-toggle="tooltip" data-placement="top" title="Edit Group">
+                                    <a href="/admin/blood-donor/edit/<?= $bd['nik']; ?>" class="btn btn-sm btn-success rounded-circle" data-toggle="tooltip" data-placement="top" title="Edit donor">
                                         <span><i class="far fa-edit"></i></span>
                                     </a>
-                                    <form action="/admin/blood-group/<?= $bg['id']; ?>" method="POST" class="d-inline">
+                                    <form action="/admin/blood-donor/<?= $bd['id']; ?>" method="POST" class="d-inline">
                                         <?= csrf_field(); ?>
                                         <input type="hidden" name="_method" value="DELETE">
                                         <button type="submit" class="btn btn-sm btn-danger rounded-circle" data-toggle="tooltip" data-placement="right" title="Delete Group" onclick="confirm('Are you sure you want to delete this?')">
@@ -94,7 +102,10 @@
                     <tfoot>
                         <tr>
                             <th>No</th>
-                            <th>Blood Group</th>
+                            <th>Image</th>
+                            <th>NIK</th>
+                            <th>Name</th>
+                            <th>Day of Birth</th>
                             <th></th>
                         </tr>
                     </tfoot>

@@ -41,11 +41,14 @@ $routes->delete('/admin/users/(:num)', 'AdminUsers::delete/$1', ['filter' => 'ad
 $routes->get('/admin/roles', 'AdminRoles::index', ['filter' => 'admin']);
 $routes->get('/admin/roles/add', 'AdminRoles::add', ['filter' => 'admin']);
 $routes->get('/admin/roles/edit/(:segment)', 'AdminRoles::edit/$1', ['filter' => 'admin']);
+$routes->delete('/admin/roles/(:num)', 'AdminRoles::delete/$1');
 $routes->get('/admin/blood-stock', 'AdminBloodStock::index', ['filter' => 'admin']);
 $routes->get('/admin/blood-donor', 'AdminBloodDonor::index', ['filter' => 'admin']);
+$routes->get('/admin/blood-donor/add', 'AdminBloodDonor::add', ['filter' => 'admin']);
 $routes->get('/admin/blood-group', 'AdminBloodGroup::index', ['filter' => 'admin']);
 $routes->get('/admin/blood-group/add', 'AdminBloodGroup::add', ['filter' => 'admin']);
-$routes->delete('/admin/roles/(:num)', 'AdminRoles::delete/$1');
+$routes->get('/admin/blood-group/edit/(:segment)', 'AdminBloodGroup::edit/$1', ['filter' => 'admin']);
+$routes->delete('/admin/blood-group/(:num)', 'AdminBloodGroup::delete/$1', ['filter' => 'admin']);
 
 /*
  * --------------------------------------------------------------------
