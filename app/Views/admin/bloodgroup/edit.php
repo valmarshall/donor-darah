@@ -27,7 +27,7 @@
         <div class="row">
             <div class="col-8">
                 <!-- Default box -->
-                <div class="card shadow card-outline card-primary">
+                <div class="card shadow card-outline card-success">
                     <form action="/adminbloodgroup/update" method="post">
                         <div class="card-body">
                             <input type="hidden" name="id" value="<?= $bloodGroup['id']; ?>">

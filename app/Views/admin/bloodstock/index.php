@@ -43,7 +43,7 @@
         <!-- Default box -->
         <div class="card shadow">
             <div class="card-header">
-                <a href="/admin/roles/add" class="btn btn-primary rounded-pill">
+                <a href="/admin/blood-stock/add" class="btn btn-primary rounded-pill">
                     <i class="fas fa-plus-circle mr-1"></i>
                     Add Blood Stock
                 </a>
@@ -69,7 +69,27 @@
                         </tr>
                     </thead>
                     <tbody>
-
+                        <?php $i = 1; ?>
+                        <?php foreach ($bloodGroup as $bg) : ?>
+                            <tr>
+                                <td><?= $i++; ?></td>
+                                <td><?= $bg['blood_group']; ?></td>
+                                <?php
+                                $stock = 0;
+                                foreach ($bloodStock as $bs) {
+                                    if ($bs['id_blood_group'] == $bg['id']) {
+                                        $stock++;
+                                    }
+                                }
+                                ?>
+                                <td><?= $stock; ?></td>
+                                <td>
+                                    <a href="/admin/blood-stock/detail/<?= $bg['id']; ?>" class="btn btn-sm btn-info rounded-circle" data-toggle="tooltip" data-placement="left" title="See Detail">
+                                        <span><i class="fas fa-info-circle"></i></span>
+                                    </a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                     <tfoot>
                         <tr>
