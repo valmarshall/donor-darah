@@ -51,6 +51,7 @@ $routes->get('/admin/blood-group', 'AdminBloodGroup::index', ['filter' => 'admin
 $routes->get('/admin/blood-group/add', 'AdminBloodGroup::add', ['filter' => 'admin']);
 $routes->get('/admin/blood-group/edit/(:segment)', 'AdminBloodGroup::edit/$1', ['filter' => 'admin']);
 $routes->delete('/admin/blood-group/(:num)', 'AdminBloodGroup::delete/$1', ['filter' => 'admin']);
+$routes->get('/admin/blood-needer', 'AdminBloodNeeder::index', ['filter' => 'admin']);
 
 /*
  * --------------------------------------------------------------------

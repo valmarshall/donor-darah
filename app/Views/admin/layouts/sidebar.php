@@ -83,6 +83,14 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a href="/admin/blood-needer" class="nav-link <?= ($menu == 'blood-needer') ? 'active' : ''; ?>">
+                        <i class="nav-icon fas fa-heartbeat"></i>
+                        <p>
+                            Blood Needer
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
