@@ -43,7 +43,7 @@
         <!-- Default box -->
         <div class="card shadow">
             <div class="card-header">
-                <a href="/admin/needing-blood/add" class="btn btn-primary rounded-pill">
+                <a href="/admin/blood-needer/add" class="btn btn-primary rounded-pill">
                     <i class="fas fa-plus-circle mr-1"></i>
                     Add New Blood Needer
                 </a>
@@ -66,6 +66,8 @@
                             <th>Name</th>
                             <th>Place and Day of Birth</th>
                             <th>Gender</th>
+                            <th>Blood Type</th>
+                            <th>Status</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -82,6 +84,28 @@
                                 <td><?= $bn['tempat_lahir'] . ', ' . date('d F Y', strtotime($bn['tanggal_lahir'])); ?></td>
                                 <td><?= $bn['jenis_kelamin']; ?></td>
                                 <td>
+                                    <?php foreach ($bloodGroup as $bg) : ?>
+                                        <?php if ($bg['id'] == $bn['id_blood_group']) : ?>
+                                            <?= $bg['blood_group']; ?>
+                                        <?php endif; ?>
+                                    <?php endforeach; ?>
+                                </td>
+                                <td>
+                                    <?php
+                                    if ($bn['status'] == 0) {
+                                        $status = 'Need Donor';
+                                        $badge = 'danger';
+                                    } elseif ($bn['status'] == 1) {
+                                        $status = 'Already Donored';
+                                        $badge = 'success';
+                                    } else {
+                                        $status = 'Looking for Donor';
+                                        $badge = 'warning';
+                                    }
+                                    ?>
+                                    <a href="#" class="badge badge-<?= $badge; ?>"><?= $status; ?></a>
+                                </td>
+                                <td>
 
                                 </td>
                             </tr>
@@ -93,6 +117,8 @@
                             <th>Name</th>
                             <th>Place and Day of Birth</th>
                             <th>Gender</th>
+                            <th>Blood Type</th>
+                            <th>Status</th>
                             <th></th>
                         </tr>
                     </tfoot>
