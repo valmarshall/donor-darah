@@ -71,7 +71,8 @@ class AdminBloodStock extends BaseController
 
         $this->bloodStockModel->save([
             'id_blood_group' => $data['bloodGroup'],
-            'id_donor' => $data['bloodDonor']
+            'id_donor' => $data['bloodDonor'],
+            'status' => 0
         ]);
 
         session()->setFlashdata('message', 'Stock added successfully');

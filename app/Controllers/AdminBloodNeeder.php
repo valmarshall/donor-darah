@@ -2,8 +2,10 @@
 
 namespace App\Controllers;
 
+use App\Models\BloodDonorModel;
 use App\Models\BloodGroupModel;
 use App\Models\BloodNeederModel;
+use App\Models\BloodStockModel;
 use App\Models\RolesModel;
 use App\Models\UsersModel;
 
@@ -13,6 +15,8 @@ class AdminBloodNeeder extends BaseController
     protected $roleModels;
     protected $bloodNeederModel;
     protected $bloodGroupModel;
+    protected $bloodStockModel;
+    protected $bloodDonorModel;
 
     public function __construct()
     {
@@ -20,6 +24,8 @@ class AdminBloodNeeder extends BaseController
         $this->roleModels = new RolesModel();
         $this->bloodNeederModel = new BloodNeederModel();
         $this->bloodGroupModel = new BloodGroupModel();
+        $this->bloodStockModel = new BloodStockModel();
+        $this->bloodDonorModel = new BloodDonorModel();
     }
 
     public function index()
@@ -30,7 +36,9 @@ class AdminBloodNeeder extends BaseController
             'me' => $this->userModels->getUser(session()->get('username')),
             'myRole' => $this->roleModels->find(session()->get('id_role')),
             'bloodNeeder' => $this->bloodNeederModel->getBloodeNeeder(),
-            'bloodGroup' => $this->bloodGroupModel->getBloodGroup()
+            'bloodGroup' => $this->bloodGroupModel->getBloodGroup(),
+            'bloodStock' => $this->bloodStockModel->findAll(),
+            'bloodDonor' => $this->bloodDonorModel->getBloodDonor()
         ];
 
         return view('admin/bloodneeder/index', $data);
@@ -100,6 +108,44 @@ class AdminBloodNeeder extends BaseController
         ]);
 
         session()->setFlashdata('message', 'Data added successfully');
+
+        return redirect()->to('/admin/blood-needer');
+    }
+
+    public function changestatus($type)
+    {
+        if ($type == 'use') {
+            $this->bloodStockModel->save([
+                'id' => $this->request->getVar('idStock'),
+                'status' => 1,
+                'donored_to' => $this->request->getVar('idNeeder')
+            ]);
+
+            $this->bloodNeederModel->save([
+                'id' => $this->request->getVar('idNeeder'),
+                'status' => 1,
+                'donored_by' => $this->request->getVar('idDonor')
+            ]);
+        } elseif ($type == 'cancel') {
+            $bloodStock = $this->bloodStockModel->where(['donored_to' => $this->request->getVar('idNeeder')])->first();
+
+            $this->bloodNeederModel->save([
+                'id' => $this->request->getVar('idNeeder'),
+                'status' => 0,
+                'donored_by' => null
+            ]);
+
+            $this->bloodStockModel->save([
+                'id' => $bloodStock['id'],
+                'status' => 0,
+                'donored_to' => null
+            ]);
+        } else {
+            $this->bloodNeederModel->save([
+                'id' => $this->request->getVar('idNeeder'),
+                'status' => 2
+            ]);
+        }
 
         return redirect()->to('/admin/blood-needer');
     }

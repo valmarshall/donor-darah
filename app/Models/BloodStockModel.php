@@ -8,7 +8,7 @@ class BloodStockModel extends Model
 {
     protected $table = 'blood_stock';
     protected $useTimestamps = true;
-    protected $allowedFields = ['id_blood_group', 'id_donor'];
+    protected $allowedFields = ['id_blood_group', 'id_donor', 'status', 'donored_to'];
 
     public function getBloodStockByDonor($idBloodDonor)
     {
