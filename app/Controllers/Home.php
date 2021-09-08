@@ -30,11 +30,24 @@ class Home extends BaseController
 	public function bloodGroup($slug)
 	{
 		$data = [
-			'title' => 'Donor Darah | Home',
+			'title' => 'Donor Darah | Blood Type',
 			'bloodGroup' => $this->bloodGroupModel->getBloodGroup($slug),
 			'bloodNeeder' => $this->bloodNeederModel->getBloodeNeeder()
 		];
 
 		return view('bloodGroup', $data);
+	}
+
+	public function donorNeededDetail($nik)
+	{
+		$bloodNeeder = $this->bloodNeederModel->getBloodeNeeder($nik);
+		$bloodGroup = $this->bloodGroupModel->find($bloodNeeder['id_blood_group']);
+		$data = [
+			'title' => 'Donor Darah | Donor Needed',
+			'bloodNeeder' => $bloodNeeder,
+			'bloodGroup' => $bloodGroup
+		];
+
+		return view('bloodNeeded', $data);
 	}
 }

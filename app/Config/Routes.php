@@ -33,6 +33,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/blood-group/(:segment)', 'Home::bloodGroup/$1');
+$routes->get('/donor-needed/(:segment)', 'Home::donorNeededDetail/$1');
 $routes->get('/admin/login', 'AdminAuth::index', ['filter' => 'auth']);
 $routes->get('/admin', 'AdminDashboard::index', ['filter' => 'admin']);
 $routes->get('/admin/users', 'AdminUsers::index', ['filter' => 'admin']);
