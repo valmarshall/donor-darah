@@ -91,6 +91,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="/admin/hospital" class="nav-link <?= ($menu == 'hospital') ? 'active' : ''; ?>">
+                        <i class="nav-icon fas fa-hospital-symbol"></i>
+                        <p>
+                            Hospital
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

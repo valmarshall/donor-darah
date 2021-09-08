@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 01 Sep 2021 pada 05.24
+-- Waktu pembuatan: 08 Sep 2021 pada 07.25
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.4.11
 
@@ -182,6 +182,34 @@ CREATE TABLE `blood_stock` (
 INSERT INTO `blood_stock` (`id`, `id_blood_group`, `id_donor`, `status`, `donored_to`, `created_at`, `updated_at`) VALUES
 (1, 3, 1, 1, 1, '2021-08-25 21:08:23', '2021-08-31 22:18:10');
 
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `hospital`
+--
+
+CREATE TABLE `hospital` (
+  `id` int(11) NOT NULL,
+  `hospital` varchar(255) NOT NULL,
+  `slug` varchar(255) NOT NULL,
+  `address` longtext NOT NULL,
+  `map` longtext DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `hospital`
+--
+
+INSERT INTO `hospital` (`id`, `hospital`, `slug`, `address`, `map`, `created_at`, `updated_at`) VALUES
+(1, 'RSUD Sele Be Solu', 'rsud-sele-be-solu', 'Jl. Selebesolu II No.1, Klawalu, Sorong Tim., Kota Sorong, Papua Bar. 98416', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.321847019496!2d131.32016701427307!3d-0.9038857355823392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d595582c0e96b59%3A0xf6dacf966ed46ae7!2sRSUD%20Sele%20Be%20Solu!5e0!3m2!1sid!2sid!4v1631074641827!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\"></iframe>', '2021-09-07 23:17:29', '2021-09-07 23:47:24'),
+(3, 'Rumah Sakit Angkatan Laut', 'rumah-sakit-angkatan-laut', 'Malabutor, Sorong Manoi, Kota Sorong, Papua Bar. 98412', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.344600795198!2d131.27276411427295!3d-0.8829294855670293!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d5eaad6139c78b1%3A0x85433794accce3cf!2sRumah%20Sakit%20Angkatan%20Laut%2C%20Malabutor%2C%20Sorong%20Manoi%2C%20Kota%20Sorong%2C%20Papua%20Bar.%2098412!5e0!3m2!1sid!2sid!4v1631076345873!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\"></iframe>', '2021-09-07 23:45:54', '2021-09-07 23:45:54'),
+(4, 'RUMAH SAKIT MUTIARA', 'rumah-sakit-mutiara', '47CJ+3GJ, Remu Utara, Kec. Sorong, Kota Sorong, Papua Bar. 98412', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15957.4033277469!2d131.2641964450062!3d-0.8771032763033896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d5954d4ce222a6d%3A0x55c1c7a32dc4fad0!2sRUMAH%20SAKIT%20MUTIARA!5e0!3m2!1sid!2sid!4v1631076787489!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\"></iframe>', '2021-09-07 23:53:13', '2021-09-07 23:53:13'),
+(5, 'Rumah Sakit Umum Herlina', 'rumah-sakit-umum-herlina', 'Jl. Selat Makassar No.7, Remu Sel., Sorong Manoi, Kota Sorong, Papua Bar. 95855', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15957.357328744281!2d131.2839884668408!3d-0.887825884976612!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d5eab08e8ce9415%3A0x18535b1775a7578e!2sRumah%20Sakit%20Umum%20Herlina!5e0!3m2!1sid!2sid!4v1631076865122!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\"></iframe>', '2021-09-07 23:54:30', '2021-09-07 23:54:30'),
+(6, 'Rumah Sakit Pertamina Sorong', 'rumah-sakit-pertamina-sorong', 'jalan ahmad yani kelurahan klaligi distrik sorong manoi, Klaligi, Sorong Manoi, Kota Sorong, Papua Bar. 98412', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15957.405116980766!2d131.25693442921076!3d-0.8766835468792762!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf57f0bfef3ddc68b!2sRS.%20Pertamina%20Sorong!5e0!3m2!1sid!2sid!4v1631076911928!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\"></iframe>', '2021-09-07 23:55:17', '2021-09-07 23:55:17'),
+(7, 'Rumah Sakit Maleo', 'rumah-sakit-maleo', 'Jl. Kesehatan No. 37, Kampung Baru, Kp. Baru, Kec. Sorong, Kota Sorong, Papua Bar. 98411', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.3588112861407!2d131.24630613405944!3d-0.8695854736969009!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x444a4cc9d4ffb628!2sRumah%20Sakit%20Maleo!5e0!3m2!1sid!2sid!4v1631077071064!5m2!1sid!2sid\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\"></iframe>', '2021-09-07 23:57:56', '2021-09-07 23:57:56');
+
 --
 -- Indexes for dumped tables
 --
@@ -230,6 +258,12 @@ ALTER TABLE `blood_stock`
   ADD KEY `blood_stock_ibfk_3` (`donored_to`);
 
 --
+-- Indeks untuk tabel `hospital`
+--
+ALTER TABLE `hospital`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
@@ -268,6 +302,12 @@ ALTER TABLE `blood_needer`
 --
 ALTER TABLE `blood_stock`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT untuk tabel `hospital`
+--
+ALTER TABLE `hospital`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
