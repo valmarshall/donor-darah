@@ -130,7 +130,7 @@
                 </div>
                 <div class="modal-body">
                     <center>
-                        <?= $h['map']; ?>
+                        <iframe src="<?= $h['map']; ?>" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </center>
                 </div>
                 <div class="modal-footer">

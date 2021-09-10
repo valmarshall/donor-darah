@@ -130,6 +130,21 @@
                                 <label for="religion">Religion</label>
                                 <input type="text" name="religion" id="religion" class="form-control" placeholder="Enter your religion">
                             </div>
+                            <div class="form-group">
+                                <label for="hospital">Choose Hospital</label>
+                                <select name="hospital" id="hospital" class="form-control <?= ($validation->hasError('hospital')) ? 'is-invalid' : ''; ?>">
+                                    <option value="">---Hospitals---</option>
+                                    <?php foreach ($hospital as $h) : ?>
+                                        <?php 
+                                            $select = '';
+                                            if ($h['id'] == old('hospital')) {
+                                                $select = 'selected';
+                                            }
+                                            ?>
+                                        <option value="<?= $h['id']; ?>" <?= $select; ?>><?= $h['hospital']; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer">

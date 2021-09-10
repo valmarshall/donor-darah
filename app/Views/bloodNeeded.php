@@ -21,6 +21,11 @@
                             <h4>Blood Type: <span><?= $bloodGroup['blood_group']; ?></span></h4>
                         </div>
                     </div>
+                    <div class="donner-contact-form">
+                        <center>
+                            <iframe src="<?= $hospital['map']; ?>" width="300" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </center>
+                    </div>
                 </div>
             </div>
             <div class="col-md-8 col-sm-8">

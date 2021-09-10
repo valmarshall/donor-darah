@@ -61,11 +61,13 @@ class AdminHospital extends BaseController
             return redirect()->to('/admin/hospital/add')->withInput();
         }
 
+        $mapURL = explode('"', $data['map']);
+
         $this->hospitalModel->save([
             'hospital' => $data['hospital'],
             'slug' => $data['slug'],
             'address' => $data['address'],
-            'map' => $data['map']
+            'map' => $mapURL[1]
         ]);
 
         session()->setFlashdata('message', 'Hospital added successfully');
@@ -112,13 +114,14 @@ class AdminHospital extends BaseController
         }
 
         $slug = url_title($data['hospital'], '-', true);
+        $mapURL = explode('"', $data['map']);
 
         $this->hospitalModel->save([
             'id' => $data['id'],
             'hospital' => $data['hospital'],
             'slug' => $slug,
             'address' => $data['address'],
-            'map' => $data['map']
+            'map' => $mapURL[1]
         ]);
 
         session()->setFlashdata('message', 'Hospital edited successfully');

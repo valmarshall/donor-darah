@@ -6,6 +6,7 @@ use App\Models\BloodDonorModel;
 use App\Models\BloodGroupModel;
 use App\Models\BloodNeederModel;
 use App\Models\BloodStockModel;
+use App\Models\HospitalModel;
 use App\Models\RolesModel;
 use App\Models\UsersModel;
 
@@ -17,6 +18,7 @@ class AdminBloodNeeder extends BaseController
     protected $bloodGroupModel;
     protected $bloodStockModel;
     protected $bloodDonorModel;
+    protected $hospitalModel;
 
     public function __construct()
     {
@@ -26,6 +28,7 @@ class AdminBloodNeeder extends BaseController
         $this->bloodGroupModel = new BloodGroupModel();
         $this->bloodStockModel = new BloodStockModel();
         $this->bloodDonorModel = new BloodDonorModel();
+        $this->hospitalModel = new HospitalModel();
     }
 
     public function index()
@@ -53,6 +56,7 @@ class AdminBloodNeeder extends BaseController
             'myRole' => $this->roleModels->find(session()->get('id_role')),
             'bloodGroup' => $this->bloodGroupModel->getBloodGroup(),
             'validation' => \config\Services::validation(),
+            'hospital' => $this->hospitalModel->getHospital(),
         ];
 
         return view('admin/bloodneeder/add', $data);
@@ -72,7 +76,8 @@ class AdminBloodNeeder extends BaseController
             'province' => $this->request->getVar('province'),
             'country' => $this->request->getVar('country'),
             'gender' => $this->request->getVar('gender'),
-            'religion' => $this->request->getVar('religion')
+            'religion' => $this->request->getVar('religion'),
+            'hospital' => $this->request->getVar('hospital')
         ];
 
         if (!$this->validate([
@@ -87,6 +92,7 @@ class AdminBloodNeeder extends BaseController
             'province' => 'required',
             'country' => 'required',
             'gender' => 'required',
+            'hospital' => 'required'
         ])) {
             return redirect()->to('/admin/blood-needer/add')->withInput();
         }
@@ -104,7 +110,8 @@ class AdminBloodNeeder extends BaseController
             'negara' => $data['country'],
             'jenis_kelamin' => $data['gender'],
             'agama' => $data['religion'],
-            'status' => 0
+            'status' => 0,
+            'id_hospital' => $data['hospital']
         ]);
 
         session()->setFlashdata('message', 'Data added successfully');
