@@ -25,6 +25,12 @@
                         <center>
                             <iframe src="<?= $hospital['map']; ?>" width="300" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                         </center>
+                        <h3>Contact</h3>
+                        <div class="form-row">
+                            <h4>Become a donor</h4>
+                            <p>Phone Number : <?= ($bloodNeeder['nohp']) ? $bloodNeeder['nohp'] : 'No phone number added'; ?></p>
+                            <span class="text-muted">* or you can just come to the hospital</span>
+                        </div>
                     </div>
                 </div>
             </div>

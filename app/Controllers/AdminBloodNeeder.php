@@ -77,7 +77,8 @@ class AdminBloodNeeder extends BaseController
             'country' => $this->request->getVar('country'),
             'gender' => $this->request->getVar('gender'),
             'religion' => $this->request->getVar('religion'),
-            'hospital' => $this->request->getVar('hospital')
+            'hospital' => $this->request->getVar('hospital'),
+            'phoneNumber' => $this->request->getVar('phoneNumber')
         ];
 
         if (!$this->validate([
@@ -111,7 +112,8 @@ class AdminBloodNeeder extends BaseController
             'jenis_kelamin' => $data['gender'],
             'agama' => $data['religion'],
             'status' => 0,
-            'id_hospital' => $data['hospital']
+            'id_hospital' => $data['hospital'],
+            'nohp' => $data['phoneNumber']
         ]);
 
         session()->setFlashdata('message', 'Data added successfully');

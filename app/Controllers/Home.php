@@ -24,7 +24,8 @@ class Home extends BaseController
 	{
 		$data = [
 			'title' => 'Donor Darah | Home',
-			'bloodGroup' => $this->bloodGroupModel->getBloodGroup()
+			'bloodGroup' => $this->bloodGroupModel->getBloodGroup(),
+			'bloodNeeder' => $this->bloodNeederModel->getBloodeNeeder()
 		];
 
 		return view('home', $data);

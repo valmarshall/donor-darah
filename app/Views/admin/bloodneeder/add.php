@@ -135,15 +135,19 @@
                                 <select name="hospital" id="hospital" class="form-control <?= ($validation->hasError('hospital')) ? 'is-invalid' : ''; ?>">
                                     <option value="">---Hospitals---</option>
                                     <?php foreach ($hospital as $h) : ?>
-                                        <?php 
-                                            $select = '';
-                                            if ($h['id'] == old('hospital')) {
-                                                $select = 'selected';
-                                            }
-                                            ?>
+                                        <?php
+                                        $select = '';
+                                        if ($h['id'] == old('hospital')) {
+                                            $select = 'selected';
+                                        }
+                                        ?>
                                         <option value="<?= $h['id']; ?>" <?= $select; ?>><?= $h['hospital']; ?></option>
                                     <?php endforeach; ?>
                                 </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="phoneNumber">Phone Number</label>
+                                <input type="text" name="phoneNumber" id="phoneNumber" class="form-control" placeholder="Enter a phone number to be contacted">
                             </div>
                         </div>
                         <!-- /.card-body -->
